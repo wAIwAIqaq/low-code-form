@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+}
+
+.header {
+  height: 40px;
+  background-color: pink;
+  line-height: 40px;
+  padding-left: 24px;
+  font-size: 20px;
+}
+.main {
+  position: relative;
+  width: auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 16px;
+}
+.box-card {
+  width: 300px;
+  height: 100vh;
+}
+.switchBar {
+  border: 1px solid #ebeef5;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  width: 20px;
+  height: 40px;
+  line-height: 40px;
+  top: 50vh;
+  position: fixed;
+  transform: translate(-20px,-50%);
+  cursor: pointer;
+  text-align: center;
+}
+.switchBar:hover {
+  color: #66b1ff;
+}
