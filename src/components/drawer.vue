@@ -9,16 +9,22 @@
     "
   >
     <div class="switchBar" @click="toggleDrawer">
-      <i class="el-icon-caret-left"></i>
+      <i class="el-icon-caret-left" :class="{ isShow: isShow }"></i>
     </div>
     <transition name="el-fade-in-linear">
-      <el-card v-show="isShow" class="box-card"> </el-card>
+      <el-card v-show="isShow" class="box-card">
+        <slot name="header">{{ header }}</slot>
+        <slot />
+      </el-card>
     </transition>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    header: {},
+  },
   data() {
     return {
       isShow: false,
