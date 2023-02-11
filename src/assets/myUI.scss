@@ -1,7 +1,7 @@
 body {
   margin: 0;
 }
-html{
+html {
   height: 100%;
 }
 
@@ -13,23 +13,30 @@ html{
   justify-content: space-around;
   box-shadow: rgb(0 0 0 / 10%) 0px 2px 12px 0px;
 }
-.main-box{
+.main-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   padding: 1rem;
 }
-.marterial-box,.selected-forms-box{
+.marterial-box,
+.selected-forms-box {
   box-shadow: rgb(0 0 0 / 10%) 0px 2px 12px 0px;
   padding: 1rem;
   max-height: calc(100vh - 8rem + 2px);
   overflow-y: auto;
 }
-.empty-material-tip{
+.empty-material-tip {
   border: 1px dashed #c0c4cc;
   color: #b8b8bd;
   padding: 1rem;
   border-radius: 0.25rem;
   display: grid;
   height: calc(100% - 2rem);
+}
+.item-container {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  grid-template-columns: 1fr;
 }

@@ -56,10 +56,17 @@ export default {
 </script>
 
 <style scoped>
+
+::v-deep .material-form>div{
+   display: flex;
+   gap: 1rem;
+   flex-direction: column;
+}
 ::v-deep .material-form .el-form-item {
   border: 1px dashed #c0c4cc;
   padding: 1rem;
   border-radius: 0.25rem;
+  margin-bottom: unset;
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 0 5rem 1fr 0;
