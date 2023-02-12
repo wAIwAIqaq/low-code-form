@@ -19,13 +19,17 @@ html {
   gap: 1rem;
   padding: 1rem;
 }
-.marterial-box,
-.selected-forms-box {
+.marterial-box {
   box-shadow: rgb(0 0 0 / 10%) 0px 2px 12px 0px;
   padding: 1rem;
   max-height: calc(100vh - 8rem + 2px);
   overflow-y: auto;
 }
+
+.selected-forms-box{
+  height: 100%;
+}
+
 .empty-material-tip {
   border: 1px dashed #c0c4cc;
   color: #b8b8bd;

@@ -1,42 +1,49 @@
 <template>
-  <draggable
-    class="selected-forms-box"
-    :list="selectedFormList"
-    :group="'materails'"
-  >
-    <el-form class="material-form">
-      <component
-        :is="item.name"
-        v-for="(item, index) in selectedFormList"
-        :key="item.id"
-        :class="{ 'is-editing': item.isEditing }"
+  <div class="marterial-box">
+    <el-form class="material-form" style="height: 100%;">
+      <draggable
+        class="selected-forms-box"
+        :list="selectedFormList"
+        :group="'materails'"
       >
-        <template slot="operate">
-          <el-button type="text" @click="editFormItem(index)">
-            <i class="el-icon-edit"></i
-          ></el-button>
-          <el-button type="text" @click="deleteFormItem(index)">
-            <i class="el-icon-delete"></i
-          ></el-button>
-        </template>
-      </component>
+        <component
+          :is="item.name"
+          v-for="(item, index) in selectedFormList"
+          :key="item.id"
+          :class="{ 'is-editing': item.isEditing }"
+        >
+          <template slot="operate">
+            <el-button type="text" @click="editFormItem(index)">
+              <i class="el-icon-edit"></i
+            ></el-button>
+            <el-button type="text" @click="deleteFormItem(index)">
+              <i class="el-icon-delete"></i
+            ></el-button>
+          </template>
+        </component>
+      </draggable>
     </el-form>
-  </draggable>
+    <edit-drawer :visible="showDrawer" :form-item-set-obj="formItemSetObj"></edit-drawer>
+  </div>
 </template>
 
 <script>
 import draggable from "vuedraggable";
 import MText from "./materials/text/index.vue";
 import MRadio from "./materials/radio/index.vue";
+import EditDrawer from './edit-drawer.vue';
 export default {
   components: {
     draggable,
     MText,
     MRadio,
+    EditDrawer
   },
   data() {
     return {
       selectedFormList: [],
+      showDrawer: false,
+      formItemSetObj: {}
     };
   },
   methods: {
@@ -54,11 +61,12 @@ export default {
     },
     editFormItem(index) {
       const formItem = this.selectedFormList[index];
-      formItem.isEditing = true;
-      console.log("1111");
       this.selectedFormList.forEach((item) => {
         item.isEditing = false;
       });
+      formItem.isEditing = true;
+      this.showDrawer = true;
+      console.log("1111", this.selectedFormList);
     },
   },
 };
@@ -70,10 +78,9 @@ export default {
   border-color: #409eff;
   transition: all 0.3s ease-in-out;
 }
-::v-deep .material-form{
-   display: flex;
-   gap: 1rem;
-   flex-direction: column;
+::v-deep .material-form .selected-forms-box{
+  display: grid;
+  gap: .5rem;
 }
 ::v-deep .material-form .el-form-item {
   border-radius: 0.25rem;
@@ -82,7 +89,7 @@ export default {
   grid-auto-flow: column;
   grid-template-columns: 0 5rem 1fr 0;
 }
-.item-container .el-button{
+.item-container .el-button {
   margin-left: 1rem;
 }
 </style>
