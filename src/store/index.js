@@ -5,8 +5,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     materialMap: new Map(),
+    selectedFormList: []
   },
-  mutations: {},
+  mutations: {
+    setSelectedFormList(state,list){
+       state.selectedFormList = list;
+    }
+  },
   actions: {},
   modules: {},
 });

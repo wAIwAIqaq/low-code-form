@@ -43,6 +43,7 @@ import draggable from "vuedraggable";
 import MText from "./materials/text/index.vue";
 import MRadio from "./materials/radio/index.vue";
 import EditDrawer from "./edit-drawer.vue";
+import { mapMutations } from "vuex";
 export default {
   components: {
     draggable,
@@ -55,10 +56,18 @@ export default {
       selectedFormList: [],
       showDrawer: false,
       formItemSetObj: {},
-      curIndex: 0
+      curIndex: 0,
     };
   },
+  watch: {
+    selectedFormList: {
+      handler(val) {
+        this.setSelectedFormList(val);
+      },
+    },
+  },
   methods: {
+    ...mapMutations(["setSelectedFormList"]),
     handleAddCom({
       index,
       on = {},
@@ -115,8 +124,8 @@ export default {
   grid-auto-flow: column;
   grid-template-columns: 0 5rem 1fr 0;
 }
-::v-deep .material-form .el-form-item .el-form-item__label{
-   padding-left:1rem
+::v-deep .material-form .el-form-item .el-form-item__label {
+  padding-left: 1rem;
 }
 .item-container .el-button {
   margin-left: 1rem;
