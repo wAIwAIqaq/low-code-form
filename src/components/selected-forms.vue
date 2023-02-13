@@ -98,6 +98,10 @@ export default {
       });
     },
 
+    deleteFormItem(index) {
+      this.selectedFormList.splice(index, 1);
+    },
+
     setFormItem(val, index = 0) {
       console.log(val, index);
       this.selectedFormList[index].attr = val;
